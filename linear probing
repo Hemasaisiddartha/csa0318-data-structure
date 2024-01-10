@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+#define SIZE 10
+
+int hash(int key)
+{
+    return key % SIZE;
+}
+
+int linearProbing(int hashTable[], int key)
+{
+    int index = hash(key);
+    int i = 0;
+
+    while (hashTable[(index + i) % SIZE] != -1)
+    {
+        i++;
+    }
+
+    hashTable[(index + i) % SIZE] = key;
+
+    return (index + i) % SIZE;
+}
+
+void display(int hashTable[])
+{
+    for (int i = 0; i < SIZE; i++)
+    {
+        printf("%d ", hashTable[i]);
+    }
+    printf("\n");
+}
+
+int main()
+{
+    int hashTable[SIZE];
+
+    for (int i = 0; i < SIZE; i++)
+    {
+        hashTable[i] = -1;
+    }
+
+    linearProbing(hashTable, 12);
+    linearProbing(hashTable, 25);
+    linearProbing(hashTable, 35);
+    linearProbing(hashTable, 45);
+    linearProbing(hashTable, 55);
+
+    display(hashTable);
+
+    return 0;
+}
