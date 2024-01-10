@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+// Function to insert an element into an array
+void insert(int arr[], int size, int element, int position) {
+    // Shift elements to the right
+    for (int i = size - 1; i >= position; i--) {
+        arr[i + 1] = arr[i];
+    }
+    // Insert the element at the specified position
+    arr[position] = element;
+}
+
+// Function to delete an element from an array
+void delete(int arr[], int size, int position) {
+    // Shift elements to the left
+    for (int i = position; i < size - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+}
+
+// Function to display the elements of an array
+void display(int arr[], int size) {
+    printf("Array elements: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int arr[5] = {1, 2, 3, 4, 5};
+    int size = 5;
+
+    // Insert an element at position 2
+    insert(arr, size, 10, 2);
+    size++;
+
+    // Delete the element at position 3
+    delete(arr, size, 3);
+    size--;
+
+    // Display the array elements
+    display(arr, size);
+
+    return 0;
+}
